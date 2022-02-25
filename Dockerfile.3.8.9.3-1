@@ -10,19 +10,13 @@ ENV LC_ALL=C
 RUN     apt-get clean && \
         rm -r /var/lib/apt/lists/*
 
-RUN     . /etc/os-release \
-        echo "deb mirror://mirrors.ubuntu.com/mirrors.txt ${UBUNTU_CODENAME} main restricted universe multiverse" >> mirror.txt && \
-        echo "deb mirror://mirrors.ubuntu.com/mirrors.txt ${UBUNTU_CODENAME}-updates main restricted universe multiverse" >> mirror.txt && \
-        echo "deb mirror://mirrors.ubuntu.com/mirrors.txt ${UBUNTU_CODENAME}-backports main restricted universe multiverse" >> mirror.txt && \
-        echo "deb mirror://mirrors.ubuntu.com/mirrors.txt ${UBUNTU_CODENAME}-security main restricted universe multiverse" >> mirror.txt && \
-        mv /etc/apt/sources.list /etc/apt/sources.list.bak && \
-        cat mirror.txt /etc/apt/sources.list.bak > /etc/apt/sources.list && \
-        apt-get update && \
+RUN     apt-get update && \
         apt-get upgrade -y --fix-missing && \
         apt-get --fix-broken install
 
 
 RUN     apt-get update && apt-get install -y  --no-install-recommends \
+            argyll \
             libsdl2-mixer-2.0-0 \
             libxrandr2 \
             libxxf86vm1 \
