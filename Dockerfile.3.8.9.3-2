@@ -14,17 +14,20 @@ RUN     apt-get update && \
         apt-get upgrade -y --fix-missing && \
         apt-get --fix-broken install
 
-
 RUN     apt-get update && apt-get install -y  --no-install-recommends \
             argyll \
+            dbus-x11 \
+            libcanberra-gtk-module \
+            libcanberra-gtk3-module \
             libsdl2-mixer-2.0-0 \
+            libxinerama1 \
             libxrandr2 \
             libxxf86vm1 \
+            python-faulthandler \
             python-gi \
             python-numpy \
             python-psutil \
-            python-wxgtk3.0 \
-            libxinerama1
+            python-wxgtk3.0
 
 RUN     wget --no-check-certificate \
             -O /displaycal.deb \
@@ -32,4 +35,4 @@ RUN     wget --no-check-certificate \
         dpkg -i /displaycal.deb
 
 
-ENTRYPOINT ["/usr/bin/cat /etc/os-release"]
+ENTRYPOINT ["/usr/bin/displaycal"]
