@@ -14,13 +14,13 @@ I'm not sure if `--nv` is strictly necessary but I didn't test without.
 
 ```
 singularity exec -B /var/run/dbus --nv \
-    docker://ghcr.io/tomharrop/container-displaycal
+    docker://ghcr.io/tomharrop/container-displaycal:3.8.9.3-3
 ```
 
 It may require sudo to run the calibration, i.e.
 
 ```
 sudo singularity shell -B /var/run/dbus --nv --writable-tmpfs \
-    docker://ghcr.io/tomharrop/container-displaycal
+    docker://ghcr.io/tomharrop/container-displaycal:3.8.9.3-3
 displaycal
 ```
